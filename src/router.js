@@ -3,6 +3,7 @@ const nameMap = {
   [""]: "首页",
   AuthorizationComponent: "权限组件",
   ResponsiveLayout: "响应式布局",
+  Regex: "正则备忘录",
 };
 const generateRoutes = () => {
   const routes = [];

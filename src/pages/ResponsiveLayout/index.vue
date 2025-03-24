@@ -28,15 +28,14 @@ onMounted(() => {
 
 <template>
   <div class="responsiveLayout">
-    <h1 class="title">拖拽右下角更改布局大小</h1>
     <div class="control">
-      <label for="x">width:</label>
+      <label for="x">宽：</label>
       <input type="text" id="x" v-model="width">
-      <label for="y">height:</label>
+      <label for="y" style="margin-left: 12px;">高：</label>
       <input type="text" id="y" v-model="height">
     </div>
     <div class="area" :style="{ width: width + 'px', height: height + 'px' }" ref="area">
-      可更改大小的布局区域
+      拖拽右下角更改布局大小
     </div>
   </div>
 </template>
@@ -47,25 +46,17 @@ onMounted(() => {
 }
 
 input {
-  height: 24px;
   width: 64px;
 }
 
-.title,
 .control {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  top: 4%;
 }
 
-.title {
-  top: 1%;
-  font-size: 32px;
-}
 
-.control {
-  top: 6%;
-}
 
 .area {
   display: flex;
