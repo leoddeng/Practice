@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeMount } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 const width = ref(200)
 const height = ref(200)
 const area = ref()
@@ -22,6 +22,10 @@ const refreshRem = () => {
 const resizeObserver = new ResizeObserver(callback);
 onMounted(() => {
   resizeObserver.observe(area.value);
+})
+onBeforeUnmount(() => {
+  resizeObserver.unobserve(area.value);
+  document.documentElement.style.fontSize = '16px';
 })
 </script>
 
