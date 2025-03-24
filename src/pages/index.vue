@@ -2,7 +2,6 @@
 import { useRouter } from "vue-router";
 const router = useRouter();
 const routes = router.getRoutes().filter(route => route.path !== "/");
-console.log(router);
 
 </script>
 

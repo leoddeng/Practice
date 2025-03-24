@@ -17,7 +17,6 @@ const refreshRem = () => {
   const width = area.value.getBoundingClientRect().width;
   const rem = width / 10;
   docEl.style.fontSize = rem + 'px';
-  console.log(rem);
 }
 
 const resizeObserver = new ResizeObserver(callback);
