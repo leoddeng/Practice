@@ -1,11 +1,12 @@
-<script lang="ts" setup>
-import { computed, ref } from 'vue'
+<script setup>
+import { computed, onBeforeMount, onMounted, ref, nextTick } from 'vue'
 const show = ref(false)
 const g = ref(true)
 const i = ref(false)
 const m = ref(false)
 const expression = ref('')
 const content = ref()
+const modeList = ref()
 const mode = computed(() => {
   let mode = ''
   if (g.value) {
@@ -17,6 +18,9 @@ const mode = computed(() => {
   if (m.value) {
     mode += 'm'
   }
+  nextTick(() => {
+    handleChange('input')
+  })
   return mode
 })
 const handleChange = (type) => {
@@ -66,6 +70,17 @@ const helperList = [
   { label: '(?<!exp)', desc: '零宽度负回顾后发断言，断言此位置前面不能匹配表达式 exp' },
   { label: '\\1, \\2, ...', desc: '反向引用，引用分组捕获的内容' },
 ];
+const handleClose = (e) => {
+  if (!modeList.value.contains(e.target) && e.target.className !== 'mode-btn') {
+    show.value = false
+  }
+}
+onMounted(() => {
+  document.addEventListener('click', handleClose)
+})
+onBeforeMount(() => {
+  document.removeEventListener('click', handleClose)
+})
 </script>
 
 <template>
@@ -80,7 +95,7 @@ const helperList = [
           <button class="mode-btn" @click="show = !show">
             mode
           </button>
-          <div class="mode-list" v-show="show">
+          <div ref="modeList" class="mode-list" v-show="show">
             <div class="mode-item">
               <label for="g">global</label>
               <input v-model="g" type="checkbox" name="g" id="g">
