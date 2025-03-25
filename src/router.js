@@ -5,6 +5,7 @@ const nameMap = {
   responsiveLayout: "响应式布局",
   regex: "正则备忘录",
   streamingOutput: "流式输出",
+  timeTable: "时间表",
 };
 const generateRoutes = () => {
   const routes = [];
