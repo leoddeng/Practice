@@ -6,6 +6,7 @@ const nameMap = {
   regex: "正则备忘录",
   streamingOutput: "流式输出",
   timeTable: "时间表",
+  virtualList: "虚拟列表",
 };
 const generateRoutes = () => {
   const routes = [];
@@ -29,6 +30,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: generateRoutes(),
 });
+
 router.beforeEach((to, _from, next) => {
   document.title = to.meta.title;
   next();
